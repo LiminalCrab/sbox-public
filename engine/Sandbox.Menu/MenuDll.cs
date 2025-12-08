@@ -183,13 +183,13 @@ internal sealed class MenuDll : IMenuDll
 			Avatar.AvatarJson = AccountInformation.AvatarJson;
 		}
 
-		using ( Sandbox.Engine.Bootstrap.StartupTiming?.ScopeTimer( "Menu - Resources" ) )
-		{
-			LoadResources();
-		}
-
 		if ( !Application.IsEditor )
 		{
+			using ( Sandbox.Engine.Bootstrap.StartupTiming?.ScopeTimer( "Menu - Resources" ) )
+			{
+				LoadResources();
+			}
+
 			SetupMenuScene();
 		}
 
@@ -312,6 +312,9 @@ internal sealed class MenuDll : IMenuDll
 
 	public void Reset()
 	{
+		if ( Application.IsEditor )
+			return;
+
 		using var _ = PushScope();
 		LoadResources();
 	}
