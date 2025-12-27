@@ -24,7 +24,13 @@ public struct MeshFace : IMeshElement
 	}
 
 	public readonly override int GetHashCode() => HashCode.Combine( Component, nameof( MeshFace ), Handle );
-	public override readonly string ToString() => IsValid ? $"{Component.GameObject.Name} Face {Handle}" : "Invalid Face";
+	public override readonly string ToString()
+	{
+		if ( !IsValid ) return "Invalid Face";
+
+		var objectName = Component.GameObject?.Name ?? "<no object>";
+		return $"{objectName} Face #{HandleIndex}";
+	}
 
 	[JsonIgnore, Hide]
 	public readonly Vector2 TextureOffset
