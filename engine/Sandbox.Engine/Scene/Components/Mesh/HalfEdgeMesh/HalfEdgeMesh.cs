@@ -73,8 +73,7 @@ public sealed record VertexHandle : IHandle
 		set => Mesh?.SetVertexEdge( this, value );
 	}
 
-	public override string ToString()
-		=> Index >= 0 ? $"{Index}" : "Invalid Vertex";
+	public override string ToString() => Index >= 0 ? $"{Index}" : "Invalid Vertex";
 }
 
 public sealed record FaceHandle : IHandle
@@ -97,8 +96,7 @@ public sealed record FaceHandle : IHandle
 		set => Mesh?.SetFaceEdge( this, value );
 	}
 
-	public override string ToString()
-		=> Index >= 0 ? $"{Index}" : "Invalid Face";
+	public override string ToString() => Index >= 0 ? $"{Index}" : "Invalid Face";
 }
 
 public sealed record HalfEdgeHandle : IHandle
@@ -139,8 +137,7 @@ public sealed record HalfEdgeHandle : IHandle
 		set => Mesh?.SetEdgeFace( this, value );
 	}
 
-	public override string ToString()
-		=> Index >= 0 ? $"{Index}" : "Invalid Edge";
+	public override string ToString() => Index >= 0 ? $"{Index}" : "Invalid Edge";
 }
 
 internal sealed partial class Mesh
